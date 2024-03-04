@@ -17,6 +17,7 @@ typedef struct s_data
 	t_list *befor;
 	int m;
 	int f;
+	int rg;//range
 }	t_data;
 
 #include <stdlib.h>
@@ -52,9 +53,14 @@ void sa(t_list **a,int f);
 void pa(t_list **b, t_list **a);
 void pb(t_list **a, t_list **b);
 void ra(t_list **a, int i);
+void rb(t_list **b, int i);
 void rra(t_list **a,int i);
 void rrb(t_list **b, int i);
 void rrr(t_list **a, t_list **b);
 
 
+
+//test algo.c
+void ft_sort(t_list **a, t_list **b, t_data *data);
+ void push_to_a(t_list **a, t_list **b,t_data *data);
 #endif

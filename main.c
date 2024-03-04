@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:03:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/04 18:34:35 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/04 22:57:24 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int small_one(t_list **a, int small_nb)
 void sort_five(t_list **a, t_list **b, int size ,t_data *data)
 {
     t_list *tmp;
-    (void)b;
     
     tmp = (*a);
     int i = 0;
@@ -98,14 +97,15 @@ void sort_five(t_list **a, t_list **b, int size ,t_data *data)
             i++;
         }
     }
-    // sort_three(a);
-    // pa(b, a);
-    // pa(b, a);
-    // printf("tmp is %i\n", small);
+    sort_three(a);
+    while (i > 0)
+    {
+        pa(b, a);
+        i--;
+    }
 }
 void sorting(t_list **a, t_list **b,t_data *data)
 {
-	(void)b;
     // int small_nb = data->tab[0];
     // int big = data->tab[data->i];
     int size = data->i;
@@ -115,8 +115,8 @@ void sorting(t_list **a, t_list **b,t_data *data)
 		sort_three(a);
 	else if(data->i <= 5)
 		sort_five(a, b, size, data);
-	// else if(data->i <= 100)
-	// 	sort_hundred(a, b);
+	else if(data->i <= 500)
+		ft_sort(a, b, data);
 }
 
 
@@ -139,17 +139,18 @@ int main(int ac, char** av)
     fill_stack(&A, &data);
     ft_sort_int_tab(data.tab, data.i);
 	sorting(&A, &B, &data);
-    s = 0;
-    t_list *curr;
+     s = 0;
+    // t_list *curr;
 
-    // pb(&A, &B);
-    curr = A;
-    while (curr)
-    {
-        printf("node [%i] is : %i \n", s, curr->num);
-        curr = curr->next;
-        s++;
-    }
-    printf("end\n");
+    // // pb(&A, &B);
+    // curr = A;
+    // while (curr)
+    // {
+    //     printf("node [%i] is : %i \n", s, curr->num);
+    //     curr = curr->next;
+    //     s++;
+    // }
+    // printf("end\n");
+    // system("leaks push_swap");
     return (0);
 }

@@ -56,8 +56,8 @@ void ft_check(t_data *data)
             ft_error("error\n");
         while (data->p[f][s])
         {
-            printf("p[i][s] is : %c\n", data->p[f][s]);
-            printf("----------------\n");
+            // printf("p[i][s] is : %c\n", data->p[f][s]);
+            // printf("----------------\n");
             if (!ft_isdigit(data->p[f][s]))
                 ft_error("error\n");
             s++;
@@ -71,7 +71,7 @@ void ft_check(t_data *data)
                 ft_error("error\n");
             s--;
         }
-        printf("num[i] is : %i \n", data->tab[f]);
+        // printf("num[i] is : %i \n", data->tab[f]);
         f++;
         data->i--;
     }
@@ -90,5 +90,5 @@ void fill_stack(t_list **a, t_data *data)
         ft_lstadd_back(a, ft_lstnew(data->tab[c]));
         c++;
     }
-    printf("%i \n", c);
+    // printf("satck size is : %i \n", c);
 }

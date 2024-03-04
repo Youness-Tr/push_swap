@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:27:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/04 17:57:19 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/04 22:23:45 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,35 @@ void ra(t_list **a, int i)
 {
 	t_list *last;
 	t_list *tmp;
-
+	if (!a || !*a)
+		return ;
 	tmp = (*a)->next;
 	last = ft_lstlast(*a);
 	last->next = (*a);
 	(*a)->next = NULL;
 	(*a) = tmp;
 	if (i == 1)
-		printf("ra function\n");
+		printf("ra\n");
 }
 void rb(t_list **b, int i)
 {
 	t_list *last;
 	t_list *tmp;
-
+	if (!b || !*b)
+		return ;
 	tmp = (*b)->next;
 	last = ft_lstlast(*b);
 	last->next = (*b);
 	(*b)->next = NULL;
 	(*b) = tmp;
 	if (i == 1)
-		printf("sa function\n");
+		printf("rb\n");
 }
 void rr(t_list **a, t_list **b)
 {
 	ra(a, 0);
 	rb(b, 0);
-	printf("sa function\n");
+	printf("rr\n");
 }
 
 void rra(t_list **a,int i)
@@ -58,11 +60,11 @@ void rra(t_list **a,int i)
 	tmp->next = NULL;
 	(*a) = last;
 	if (i == 1)
-		printf("rra function\n");
+		printf("rra\n");
 }
 void rrb(t_list **b, int i)
 {
-	if (!(*b)->next || !(b))
+	if (!(*b) || !(*b)->next)
 		return;
 	t_list *tmp;
 	t_list *last;
@@ -73,11 +75,11 @@ void rrb(t_list **b, int i)
 	tmp->next = NULL;
 	(*b) = last;
 	if (i == 1)
-		printf("rrb function\n");
+		printf("rrb\n");
 }
 void rrr(t_list **a, t_list **b)
 {
 	rra(a, 0);
 	rrb(b, 0);	
-	printf("sa function\n");
+	printf("rrr\n");
 }
