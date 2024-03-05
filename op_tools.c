@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op.c                                               :+:      :+:    :+:   */
+/*   op_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:36:02 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/04 10:23:16 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:55:38 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,21 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		node->next = new;
 	else
 		*lst = new;
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int		len;
+	t_list	*tmp;
+
+	tmp = lst;
+	len = 0;
+	if (lst == NULL)
+		return (0);
+	while (tmp != NULL)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	return (len);
 }

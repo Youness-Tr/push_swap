@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:26:32 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/04 22:38:28 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:43:12 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,35 @@ void ft_range(t_data *data)
 {
 	data->rg = 1;
 	if (data->i >= 6 && data->i <= 16)
-		data->rg = 8;
+		data->rg = 3;
 	else if (data->i >= 17 && data->i <= 100)
 		data->rg = 15;
 	else if (data->i > 100)
-		data->rg = 30;
+		data->rg = 29;
 	else if (data->i > 500)
 		data->rg = 45;
+}
+
+int find_index(t_list *stack, int start, int end)
+{
+	int index = 0;
+	int find = 0;
+	
+	while (stack)
+	{
+		if (stack->num == start)
+			break;
+		if (stack->num >= start && stack->num <= end)
+		{
+			break;
+			find = 1;
+		}
+		index++;
+		stack = stack->next;
+	}
+	if (find == 1)
+		return (index);
+	return (0);
 }
 
 int isbign(t_list *stack, int nb)
@@ -68,8 +90,9 @@ void ft_sort(t_list **a, t_list **b, t_data *data)
 			end = data->i -1;
 		if ((*a)->num >= data->tab[start] && (*a)->num <= data->tab[end])
 		{
-			// printf("\033[1;31mif lowla\033[0m\n");
 			pb(a,b);
+			if (ft_lstsize(*b) >= 2 && (*b)->num < (*b)->next->num)
+				sb(b, 1);
 			start++;
 			end++;
 		}
@@ -83,8 +106,10 @@ void ft_sort(t_list **a, t_list **b, t_data *data)
 		}
 		else if((*a)->num > data->tab[end])
 		{
-			// printf("\033[1;31melse \033[0m\n");
-		 	ra(a,1);
+			if (find_index(*a, data->tab[start], data->tab[end]) <= (ft_lstsize(*b) / 2))
+		 		ra(a,1);
+			else
+				rra(a, 1);
 		}
 	}
 	// printf("\033========================================\n\033[0m\n");

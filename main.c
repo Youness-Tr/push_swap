@@ -6,25 +6,33 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:03:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/04 22:57:24 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:01:22 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_three(t_list **a)
+void sort_three(t_list **a, t_data *data)
 {
     // t_list *f = (*a);
     // t_list *s = (*a)->next;
     // t_list *t = (*a)->next->next;
-
-	if ((*a)->num > (*a)->next->num && (*a)->num > (*a)->next->next->num)
-        ra(a, 1);
-    if ((*a)->next->num > (*a)->num && (*a)->next->num > (*a)->next->next->num)
-        rra(a, 1);
-	if ((*a)->next->next->num > (*a)->num && (*a)->num > (*a)->next->num && (*a)->num > (*a)->next->num)
-        sa(a, 1);
+    if (data->i == 2)
+    {
+        if ((*a)->num > (*a)->next->num)
+            sa(a, 1);
+    }
+    else
+    {
+	    if ((*a)->num > (*a)->next->num && (*a)->num > (*a)->next->next->num)
+            ra(a, 1);
+        if ((*a)->next->num > (*a)->num && (*a)->next->num > (*a)->next->next->num)
+            rra(a, 1);
+	    if ((*a)->next->next->num > (*a)->num && (*a)->num > (*a)->next->num && (*a)->num > (*a)->next->num)
+            sa(a, 1); 
+    }
 }
+
 int check_sort(t_list *a, int size)
 {
     int i;
@@ -87,7 +95,7 @@ void sort_five(t_list **a, t_list **b, int size ,t_data *data)
     {
         if (small_one(a, data->tab[i]) < (size / 2))
             ra(a, 1);
-        else 
+        else
             rra(a, 1);
         // printf("small is %i\n", small_one(a, data->tab[i]));
         if (small_one(a, data->tab[i]) == 0)
@@ -97,7 +105,7 @@ void sort_five(t_list **a, t_list **b, int size ,t_data *data)
             i++;
         }
     }
-    sort_three(a);
+    sort_three(a, data);
     while (i > 0)
     {
         pa(b, a);
@@ -110,15 +118,13 @@ void sorting(t_list **a, t_list **b,t_data *data)
     // int big = data->tab[data->i];
     int size = data->i;
 
-
-	if(data->i <= 3)
-		sort_three(a);
-	else if(data->i <= 5)
+	if(data->i == 3 || data->i == 2)
+		sort_three(a, data);
+	else if(data->i == 5 || data->i == 4)
 		sort_five(a, b, size, data);
-	else if(data->i <= 500)
+	else if(data->i >= 6)
 		ft_sort(a, b, data);
 }
-
 
 int main(int ac, char** av)
 {

@@ -44,12 +44,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_before(t_list *lst);
+int	ft_lstsize(t_list *lst);
 
 void push(t_list **stack, int num);
 void	pop(t_list **stack);
 
 /*operations*/
 void sa(t_list **a,int f);
+void sb(t_list **b,int f);
 void pa(t_list **b, t_list **a);
 void pb(t_list **a, t_list **b);
 void ra(t_list **a, int i);
