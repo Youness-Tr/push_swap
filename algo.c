@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:26:32 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/05 17:43:12 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:31:34 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@ void ft_range(t_data *data)
 {
 	data->rg = 1;
 	if (data->i >= 6 && data->i <= 16)
-		data->rg = 3;
+		data->rg = 8;
 	else if (data->i >= 17 && data->i <= 100)
 		data->rg = 15;
 	else if (data->i > 100)
-		data->rg = 29;
+		data->rg = 30;
 	else if (data->i > 500)
 		data->rg = 45;
 }
@@ -27,23 +27,15 @@ void ft_range(t_data *data)
 int find_index(t_list *stack, int start, int end)
 {
 	int index = 0;
-	int find = 0;
 	
 	while (stack)
 	{
-		if (stack->num == start)
+		if (stack->num <= start && stack->num <= end)
 			break;
-		if (stack->num >= start && stack->num <= end)
-		{
-			break;
-			find = 1;
-		}
 		index++;
 		stack = stack->next;
 	}
-	if (find == 1)
-		return (index);
-	return (0);
+	return (index);
 }
 
 int isbign(t_list *stack, int nb)
@@ -104,13 +96,10 @@ void ft_sort(t_list **a, t_list **b, t_data *data)
 			start++;
 			end++;
 		}
-		else if((*a)->num > data->tab[end])
-		{
-			if (find_index(*a, data->tab[start], data->tab[end]) <= (ft_lstsize(*b) / 2))
-		 		ra(a,1);
-			else
-				rra(a, 1);
-		}
+		else if (find_index(*a, data->tab[start], data->tab[end]) >= (ft_lstsize(*a) / 2))
+			rra(a,1);
+		else
+			ra(a, 1);
 	}
 	// printf("\033========================================\n\033[0m\n");
 	// while ((*b))
