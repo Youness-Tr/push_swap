@@ -1,42 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 20:49:18 by ytarhoua          #+#    #+#             */
+/*   Updated: 2024/03/13 20:17:02 by ytarhoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sa(t_list **a,int f)
+int	ft_lstsize(t_list *lst)
 {
-	t_list *tmp;
-	
-	// tmp = (*a)->next;
-	// (*a)->next = (*a);
-	// (*a) = tmp;
-	// if (f == 1)
+	int		len;
+	t_list	*tmp;
 
+	tmp = lst;
+	len = 0;
+	if (lst == NULL)
+		return (0);
+	while (tmp != NULL)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	return (len);
+}
 
+void	sa(t_list **a, int f)
+{
+	t_list	*tmp;
+
+	if (ft_lstsize(*a) == 1)
+		return ;
 	tmp = (*a)->next;
-    (*a)->next = tmp->next;
-    tmp->next = *a;
-    *a = tmp;
+	(*a)->next = tmp->next;
+	tmp->next = *a;
+	*a = tmp;
 	if (f == 1)
-		printf("sa\n");
+		write(1, "sa\n", 3);
 }
-void sb(t_list **b, int f)
+
+void	sb(t_list **b, int f)
 {
-	t_list *tmp;
-
-	// tmp = (*b)->next;
-	// (*b)->next = (*b);
-	// (*b) = tmp;
-	// if (f == 1)
-
-
+	t_list	*tmp;
+	if (!(*b) || !b)
+		return;
 	tmp = (*b)->next;
-    (*b)->next = tmp->next;
-    tmp->next = *b;
-    *b = tmp;
+	(*b)->next = tmp->next;
+	tmp->next = *b;
+	*b = tmp;
 	if (f == 1)
-		printf("sb\n");
+		write(1, "sb\n", 3);
 }
-void ss(t_list **b,t_list **a)
+
+void	ss(t_list **b, t_list **a, int i)
 {
-	sa(a,0);
-	sb(b,0);
-	printf("ss\n");
+	sa(a, 0);
+	sb(b, 0);
+	if (i == 1)
+		write(1, "ss\n", 3);
 }
