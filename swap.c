@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 20:49:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 20:17:02 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/15 00:50:59 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	sa(t_list **a, int f)
 void	sb(t_list **b, int f)
 {
 	t_list	*tmp;
+
 	if (!(*b) || !b)
-		return;
+		return ;
 	tmp = (*b)->next;
 	(*b)->next = tmp->next;
 	tmp->next = *b;

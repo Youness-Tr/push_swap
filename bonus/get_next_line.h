@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:10:30 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/11 12:28:56 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:01:05 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*new_one(char *save, int i, int j);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *save, char *buff);
 size_t	ft_strlen(const char *s);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

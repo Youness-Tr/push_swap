@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:41:44 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 20:43:46 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/15 00:50:11 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,6 @@
 
 void	ft_operations(t_list **A, t_list **B, char *line)
 {
-	// t_list *tmp;
-
-	// tmp = (*A);
-	// printf("op is : %s", line);
-	// while (tmp)
-	// {
-	// 	printf("stack A => %d\n", tmp->num);
-	// 	tmp = tmp->next;
-	// }
 	if (ft_strncmp(line, "sa\n", 3) == 0)
 		sa(A, 0);
 	else if (ft_strncmp(line, "sb\n", 3) == 0)
@@ -50,49 +41,40 @@ void	ft_operations(t_list **A, t_list **B, char *line)
 		ft_error("ERROR !\n");
 }
 
-int main(int ac, char** av)
+int	main(int ac, char **av)
 {
-    t_data data;
-    t_list *A;
-    t_list *B;
-	char *line;
+	t_data	data;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	char	*line;
 
-
-    A = NULL;
-    B = NULL;
-    line = NULL;
-    if (ac < 2)
-        return (0);
-    cat_all(ac, av, &data);
-    ft_check(&data, 0, 0);
-    fill_stack(&A, &data);
-    line = get_next_line(0);
+	stack_a = NULL;
+	stack_b = NULL;
+	line = NULL;
+	if (ac < 2)
+		return (0);
+	cat_all(ac, av, &data);
+	ft_check(&data, 0, 0);
+	fill_stack(&stack_a, &data);
+	line = get_next_line(0);
 	while (line)
 	{
-		// printf("line %s\n", line);
-		ft_operations(&A, &B, line);
+		ft_operations(&stack_a, &stack_b, line);
 		free(line);
 		line = get_next_line(0);
 	}
-	if (check_sorted(A) == 0)
-	{
-		// printf("cc\n");
+	if (check_sorted(stack_a) == 0 || stack_b != NULL)
 		write(1, "KO\n", 3);
-	}
 	else
 		write(1, "OK\n", 3);
 	return (0);
-    // s = 0;
-    // t_list *curr;
-    // pb(&A, &B);
-    // curr = A;
-    // while (curr)
-    // {
-    //     printf("node [%i] is : %i \n", s, curr->num);
-    //     curr = curr->next;
-    //     s++;
-    // }
-    // printf("end\n");
-    // system("leaks push_swap");
-    return (0);
 }
+
+	// t_list *tmp;
+	// tmp = (*A);
+	// printf("op is : %s", line);
+	// while (tmp)
+	// {
+	// 	printf("stack A => %d\n", tmp->num);
+	// 	tmp = tmp->next;
+	// }

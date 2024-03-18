@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 20:51:47 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 17:51:35 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/15 00:39:40 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ long	ft_atoi(char *nptr, long res, int i)
 {
 	int	sign;
 
-	i = 0;
 	sign = 1;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
 		i++;
@@ -56,13 +55,13 @@ long	ft_atoi(char *nptr, long res, int i)
 		i++;
 	while (ft_isdigit(nptr[i]))
 	{
-		if (res * 10 + nptr[i] - 48 > INT_MAX || res * 10 * sign < INT_MIN)
-			ft_error("Error\n");
 		res *= 10;
 		res += nptr[i] - 48;
 		i++;
 	}
 	if (nptr[i])
+		ft_error("Error\n");
+	if ((res * sign) > INT_MAX || (res * sign) < -2147483648)
 		ft_error("Error\n");
 	return (res * sign);
 }

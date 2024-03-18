@@ -6,7 +6,7 @@
 #    By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 10:41:54 by ytarhoua          #+#    #+#              #
-#    Updated: 2024/03/13 17:35:56 by ytarhoua         ###   ########.fr        #
+#    Updated: 2024/03/14 23:04:42 by ytarhoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,4 +41,4 @@ fclean : clean
 re: fclean all
 
 .PHONY: all clean fclean re
-.SECONDARY: $(OBJ)
+.SECONDARY: $(OBJ) $(OBJ_B)

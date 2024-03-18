@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:16:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 17:53:07 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:24:52 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,29 @@ void	ft_sort_int_tab(int *tab, int size)
 
 void	cat_all(int ac, char **av, t_data *data)
 {
-	data->i = 1;
+	data->size = 1;
 	data->str = NULL;
 	data->p = NULL;
 	data->tab = NULL;
-	while (data->i < ac)
+	while (data->size < ac)
 	{
-		data->str = ft_strjoin_p(data->str, av[data->i]);
-		data->i++;
+		data->str = ft_strjoin_p(data->str, av[data->size]);
+		data->size++;
 	}
 	data->p = ft_split(data->str, ' ');
-	data->i = 0;
-	while (data->p[data->i] != '\0')
-		data->i++;
-	if (data->i == 0)
+	data->size = 0;
+	while (data->p[data->size] != '\0')
+		data->size++;
+	if (data->size == 0)
 		ft_error("Error\n");
-	data->tab = malloc(sizeof(int) * data->i);
+	data->tab = malloc(sizeof(int) * data->size);
 	if (!data->tab)
 		exit (0);
 }
 
 void	ft_check(t_data *data, int f, int s)
 {
-	while (data->i > 0)
+	while (data->size > 0)
 	{
 		s = 0;
 		if (data->p[f][s] == '+' || data->p[f][s] == '-')
@@ -70,22 +70,19 @@ void	ft_check(t_data *data, int f, int s)
 		}
 		s = 0;
 		data->tab[f] = ft_atoi(data->p[f], 0, 0);
-		// printf("data->tab[f] : %i\n", data->tab[f]);
 		if (data->tab[f])
 			s = f - 1;
 		check_doubel(data, f, s);
 		f++;
-		data->i--;
+		data->size--;
 	}
-	data->i = f;
+	data->size = f;
 }
 
 void	check_doubel(t_data *data, int f, int s)
 {
 	while (f > s && f != 0 && s >= 0)
 	{
-		// printf("s is : %i and f is : %i\n", s, f);
-		// printf("data->tab[f] : %i data->tab[s] : %i\n", data->tab[f], data->tab[s]);
 		if (data->tab[f] == data->tab[s])
 		{
 			ft_error("Error\n");
@@ -99,7 +96,7 @@ void	fill_stack(t_list **a, t_data *data)
 	int	c;
 
 	c = 0;
-	while (c < data->i)
+	while (c < data->size)
 	{
 		ft_lstadd_back(a, ft_lstnew(data->tab[c]));
 		c++;

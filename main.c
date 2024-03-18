@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:03:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 17:53:30 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:26:24 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	fill_stack(&stack_a, &data);
 	if (check_sorted(stack_a) == 0)
 	{
-		ft_sort_int_tab(data.tab, data.i);
+		ft_sort_int_tab(data.tab, data.size);
 		sorting(&stack_a, &stack_b, &data);
 	}
 	return (0);

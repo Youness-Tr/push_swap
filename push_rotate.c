@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:30:23 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 20:12:04 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/15 00:42:57 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ra(t_list **a, int i)
 	if (i == 1)
 		write(1, "ra\n", 3);
 }
+
 void	rb(t_list **b, int i)
 {
 	t_list	*last;

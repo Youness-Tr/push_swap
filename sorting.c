@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:16:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 18:03:00 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:24:52 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,23 @@ void	sorting(t_list **a, t_list **b, t_data *data)
 {
 	int	size;
 
-	size = data->i;
-	if (data->i == 3 || data->i == 2)
+	size = data->size;
+	if (data->size == 3 || data->size == 2)
 		sort_three(a, data);
-	else if (data->i == 5 || data->i == 4)
+	else if (data->size == 5 || data->size == 4)
 		sort_five(a, b, size, data);
-	else if (data->i >= 6)
-		ft_sort(a, b, data);
+	else if (data->size >= 6)
+	{
+		ft_range(data);
+		data->end = data->rg;
+		ft_sort(a, b, data, 0);
+		push_to_a(a, b, data);
+	}
 }
 
 void	sort_three(t_list **a, t_data *data)
 {
-	if (data->i == 2)
+	if (data->size == 2)
 	{
 		if ((*a)->num > (*a)->next->num)
 			sa(a, 1);
@@ -73,9 +78,9 @@ void	sort_five(t_list **a, t_list **b, int size, t_data *data)
 	}
 }
 
-int check_sorted(t_list *stack)
+int	check_sorted(t_list *stack)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!stack)
 		return (1);
