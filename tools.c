@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:17:51 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/13 16:25:26 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:06:51 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	pop(t_list **stack)
 	free(tmp);
 }
 
-void	ft_error(char *s)
+void	ft_error(char *s, t_data *data)
 {
 	write(1, s, ft_strlen(s));
-	// system("leaks push_swap");
+	ft_free(data->p);
+	system("leaks push_swap");
 	exit(1);
 }
 
@@ -60,4 +61,19 @@ t_list	*ft_lstnew(int content)
 	new->num = content;
 	new->next = NULL;
 	return (new);
+}
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		free(tmp);
+	}
+	tmp = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 20:51:47 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/15 00:39:40 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:12:58 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_free(char **map)
+void	ft_free(char **p)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (p[i])
 	{
-		free(map[i]);
+		free(p[i]);
 		i++;
 	}
-	free(map);
+	free(p);
 }
 
-long	ft_atoi(char *nptr, long res, int i)
+long	ft_atoi(char *nptr, long res, int i, t_data *data)
 {
 	int	sign;
 
@@ -60,9 +60,9 @@ long	ft_atoi(char *nptr, long res, int i)
 		i++;
 	}
 	if (nptr[i])
-		ft_error("Error\n");
+		ft_error("Error\n", data);
 	if ((res * sign) > INT_MAX || (res * sign) < -2147483648)
-		ft_error("Error\n");
+		ft_error("Error\n", data);
 	return (res * sign);
 }
 

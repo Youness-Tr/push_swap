@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:16:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/16 21:24:52 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:13:35 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void	cat_all(int ac, char **av, t_data *data)
 		data->size++;
 	}
 	data->p = ft_split(data->str, ' ');
+	free(data->str);
 	data->size = 0;
 	while (data->p[data->size] != '\0')
 		data->size++;
 	if (data->size == 0)
-		ft_error("Error\n");
+		ft_error("Error\n", data);
 	data->tab = malloc(sizeof(int) * data->size);
 	if (!data->tab)
 		exit (0);
@@ -61,15 +62,15 @@ void	ft_check(t_data *data, int f, int s)
 		if (data->p[f][s] == '+' || data->p[f][s] == '-')
 			s++;
 		if (!data->p[f][s])
-			ft_error("Error\n");
+			ft_error("Error\n", data);
 		while (data->p[f][s])
 		{
 			if (!ft_isdigit(data->p[f][s]))
-				ft_error("Error\n");
+				ft_error("grror\n", data);
 			s++;
 		}
 		s = 0;
-		data->tab[f] = ft_atoi(data->p[f], 0, 0);
+		data->tab[f] = ft_atoi(data->p[f], 0, 0, data);
 		if (data->tab[f])
 			s = f - 1;
 		check_doubel(data, f, s);
@@ -85,7 +86,7 @@ void	check_doubel(t_data *data, int f, int s)
 	{
 		if (data->tab[f] == data->tab[s])
 		{
-			ft_error("Error\n");
+			ft_error("Error\n", data);
 		}
 		s--;
 	}

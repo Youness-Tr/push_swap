@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:54:13 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/16 21:25:48 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:59:01 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	fill_stack(t_list **a, t_data *data);
 /*parsing tools*/
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin_p(char *save, char *buff);
-long	ft_atoi(char *nptr, long res, int i);
+long	ft_atoi(char *nptr, long res, int i, t_data *data);
 int		ft_isdigit(int c);
-void	ft_free(char **map);
+void	ft_free(char **p);
 size_t	ft_strlen(const char *s);
-void	ft_error(char *s);
+void	ft_error(char *s, t_data *data);
 
 /*operations*/
 void	pa(t_list **b, t_list **a, int i);

@@ -6,14 +6,14 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:41:44 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/15 00:50:11 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:00:53 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "get_next_line.h"
 
-void	ft_operations(t_list **A, t_list **B, char *line)
+void	ft_operations(t_list **A, t_list **B, char *line, t_data *data)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
 		sa(A, 0);
@@ -38,7 +38,7 @@ void	ft_operations(t_list **A, t_list **B, char *line)
 	else if (ft_strncmp(line, "pb\n", 3) == 0)
 		pb(A, B, 0);
 	else
-		ft_error("ERROR !\n");
+		ft_error("ERROR !\n", data);
 }
 
 int	main(int ac, char **av)
