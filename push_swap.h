@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:54:13 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/20 14:59:01 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:39:02 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_list	*ft_before(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	push(t_list **stack, int num);
 void	pop(t_list **stack);
+void	ft_lstclear(t_list **lst);
 
 /*sorting*/
 void	sorting(t_list **a, t_list **b, t_data *data);

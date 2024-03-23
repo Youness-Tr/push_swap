@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:41:44 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/20 15:00:53 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 21:33:20 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_operations(t_list **A, t_list **B, char *line, t_data *data)
 	else if (ft_strncmp(line, "pb\n", 3) == 0)
 		pb(A, B, 0);
 	else
-		ft_error("ERROR !\n", data);
+		ft_error("Error\n", data);
 }
 
 int	main(int ac, char **av)
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 	line = get_next_line(0);
 	while (line)
 	{
-		ft_operations(&stack_a, &stack_b, line);
+		ft_operations(&stack_a, &stack_b, line, &data);
 		free(line);
 		line = get_next_line(0);
 	}

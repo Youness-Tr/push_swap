@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:03:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/16 21:26:24 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:49:40 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,9 @@ int	main(int ac, char **av)
 		ft_sort_int_tab(data.tab, data.size);
 		sorting(&stack_a, &stack_b, &data);
 	}
+	ft_free(data.p);
+	free(data.tab);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	return (0);
 }
-	// int s = 0;
-	// t_list *curr;
-	// // pb(&A, &B);
-	// curr = A;
-	// while (curr)
-	// {
-	//     printf("node [%i] is : %i \n", s, curr->num);
-	//     curr = curr->next;
-	//     s++;
-	// }
-	// printf("end\n");
-	// system("leaks push_swap");
-/*
-write -> printf and exit in error cases and norm
-and checker handle also test all things
-*/

@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 20:49:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/15 00:50:59 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:40:49 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ int	ft_lstsize(t_list *lst)
 		tmp = tmp->next;
 	}
 	return (len);
+}
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		free(tmp);
+	}
+	tmp = NULL;
 }
 
 void	sa(t_list **a, int f)

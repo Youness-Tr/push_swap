@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:16:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/16 21:24:52 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:49:26 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	check_sorted(t_list *stack)
 	{
 		if (tmp->num > tmp->next->num)
 			return (0);
-		// printf("stack => %d\n", tmp->num);
 		tmp = tmp->next;
 	}
 	return (1);

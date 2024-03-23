@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 20:51:47 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/20 15:12:58 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 21:44:32 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ char	*ft_strjoin_p(char *save, char *buff)
 	int		len1;
 	int		len2;
 	char	*str;
-
+	if (!buff)
+		return (NULL);
 	str = malloc(((ft_strlen(save) + ft_strlen(buff)) + 2) * sizeof(char));
 	if (!str)
 		return (NULL);

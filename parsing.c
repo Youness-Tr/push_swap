@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:16:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/03/20 15:13:35 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:10:09 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,23 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
+void check_empty(char *str, t_data *data)
+{
+	int i = 0;
+
+	while (str[i] && (str[i] == ' ' || str[i] == '	'))
+	{
+		i++;
+	}
+	if ((size_t)i == ft_strlen(str))
+	{
+		write(2, "Error\n", 6);
+		free(data->str);
+		exit(1);
+	}
+		
+}
+
 void	cat_all(int ac, char **av, t_data *data)
 {
 	data->size = 1;
@@ -39,9 +56,11 @@ void	cat_all(int ac, char **av, t_data *data)
 	data->tab = NULL;
 	while (data->size < ac)
 	{
+		check_empty(av[data->size], data);
 		data->str = ft_strjoin_p(data->str, av[data->size]);
 		data->size++;
 	}
+	// printf("size is : %i\n", data->size);
 	data->p = ft_split(data->str, ' ');
 	free(data->str);
 	data->size = 0;
